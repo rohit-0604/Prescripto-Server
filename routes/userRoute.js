@@ -29,7 +29,7 @@ userRouter.post('/cancel-appointment', authUser, cancelAppointment);
 userRouter.post('/payu-payment-initiate', authUser, initiatePayuPayment); // Endpoint to initiate payment
 // PayU will POST to this URL, and it sends x-www-form-urlencoded data
 // It does NOT need authUser middleware as PayU is calling it, not your user.
-userRouter.post('/payu-callback', express.urlencoded({ extended: true }), payuCallback);
+// userRouter.post('/payu-callback', express.urlencoded({ extended: true }), payuCallback);
 // -----------------------
 
 export default userRouter;
