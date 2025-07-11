@@ -38,9 +38,15 @@ app.options('*', cors()); // Handle preflight requests for all routes
 app.use(express.json()) // requests gets passes through this
 
 // Api endpoints
-app.use('/api/admin',adminRouter)
-app.use('/api/doctor',doctorRouter)
-app.use('/api/user',userRouter)
+console.log("Mounting /api/admin routes...");
+app.use('/api/admin', adminRouter);
+
+console.log("Mounting /api/doctor routes...");
+app.use('/api/doctor', doctorRouter);
+
+console.log("Mounting /api/user routes...");
+app.use('/api/user', userRouter);
+
 // localhost:4000/api/admin
 
 app.get('/',(req,res)=>{
