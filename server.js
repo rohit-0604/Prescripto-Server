@@ -32,7 +32,7 @@ app.use(cors({
   credentials: true
 }));
 
-app.options('*', cors()); // Handle preflight requests for all routes
+// app.options('*', cors()); // Handle preflight requests for all routes
 
 // Middleware
 app.use(express.json()) // requests gets passes through this
