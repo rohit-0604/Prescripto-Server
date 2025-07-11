@@ -14,9 +14,26 @@ const port = process.env.PORT || 4000
 connectDB()
 connectCloudinary()
 
+// ✅ CORS Setup connect frontend to backend
+const allowedOrigins = [
+  'https://prescriptodoctorappointmentapp.netlify.app',
+  'https://prescriptoadmindoctorpanel.netlify.app'
+];
+
+app.use(cors({
+  origin: function (origin, callback) {
+    // Allow requests with no origin (like mobile apps, curl, Postman)
+    if (!origin || allowedOrigins.includes(origin)) {
+      callback(null, true);
+    } else {
+      callback(new Error('Not allowed by CORS'));
+    }
+  },
+  credentials: true
+}));
+
 // Middleware
 app.use(express.json()) // requests gets passes through this
-app.use(cors())  // connect frontend to backend
 
 // Api endpoints
 app.use('/api/admin',adminRouter)
